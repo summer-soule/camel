@@ -1,8 +1,5 @@
 //-----------------------------------------------------------------------------
 //
-// Task: Consider the program. Identify the directives and statements
-// 		 in this program
-//
 // Q1:	 Which of the following are not legal C identifiers?
 // (a)	100_bottles
 // (b)	_100_bottles
