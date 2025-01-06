@@ -17,9 +17,10 @@ p2s2e4=$(BUILDDIR)/part2/section4/ex4
 p2proj1=$(BUILDDIR)/part2/projects/project1
 p2proj2=$(BUILDDIR)/part2/projects/project2
 p2proj3=$(BUILDDIR)/part2/projects/project3
+p2proj4=$(BUILDDIR)/part2/projects/project4
 
 # Targets
-TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3)
+TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4)
 
 .PHONY=all
 all: $(TARGETS)
@@ -46,6 +47,9 @@ $(p2proj2): $(SRCDIR)/part2/projects/project2.c | $(BUILDDIR)
 
 $(p2proj3): $(SRCDIR)/part2/projects/project3.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $^ -o $@ -lm
+
+$(p2proj4): $(SRCDIR)/part2/projects/project4.c | $(BUILDDIR)
+	$(CC) $(CFLAGS) $^ -o $@
 
 # Create build dir
 $(BUILDDIR):
