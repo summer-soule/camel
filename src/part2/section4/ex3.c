@@ -11,14 +11,14 @@
 //
 //-----------------------------------------------------------------------------
 
-// dweight.c: computes the dimensional wight of a 12" x 10" x 8" box
+// dweight.c: computes the dimensional weight of a 12" x 10" x 8" box
 
 #include <stdio.h>
 
 int main(void)
 {
 	int height = 8, length = 12, width = 10;
-	int volume, weight;
+	int volume;
 
 	volume = height * length * width;
 
