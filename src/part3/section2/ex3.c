@@ -17,8 +17,8 @@
 //		equal: after value can be 0 or unlimited white-space chars
 //
 // (d) "%f,%f"		versus "%f, %f"
-// 		equal: "%f, %f"
-// 				   ^----------- can be 0 or unlimited white-space char
+// 		equal:   "%f, %f"
+// 				     ^--------- can be 0 or unlimited white-space char
 //
 // Date: 2025-1-10
 // Time: 10:50 AM
