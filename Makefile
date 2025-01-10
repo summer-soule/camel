@@ -17,6 +17,7 @@ p3s1e1=$(BUILDDIR)/part3/section1/ex1
 p3s1e2=$(BUILDDIR)/part3/section1/ex2
 p3s2e4=$(BUILDDIR)/part3/section2/ex4
 p3s2e5=$(BUILDDIR)/part3/section2/ex5
+p3s2e6=$(BUILDDIR)/part3/section2/ex6
 
 # Projects
 p2proj1=$(BUILDDIR)/part2/projects/project1
@@ -29,7 +30,7 @@ p2proj7=$(BUILDDIR)/part2/projects/project7
 p2proj8=$(BUILDDIR)/part2/projects/project8
 
 # Targets
-TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8) $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5)
+TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8) $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5) $(p3s2e6)
 
 .PHONY=all
 all: $(TARGETS)
@@ -57,6 +58,9 @@ $(p3s2e4): $(SRCDIR)/part3/section2/ex4.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(p3s2e5): $(SRCDIR)/part3/section2/ex5.c | $(BUILDDIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(p3s2e6): $(SRCDIR)/part3/section2/ex6.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # Building rules for projects
