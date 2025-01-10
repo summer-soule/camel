@@ -13,6 +13,8 @@ p2s2e2=$(BUILDDIR)/part2/section2/ex2
 p2s2e3=$(BUILDDIR)/part2/section4/ex3
 p2s2e4=$(BUILDDIR)/part2/section4/ex4
 
+p3s1e1=$(BUILDDIR)/part3/section1/ex1
+
 # Projects
 p2proj1=$(BUILDDIR)/part2/projects/project1
 p2proj2=$(BUILDDIR)/part2/projects/project2
@@ -24,7 +26,7 @@ p2proj7=$(BUILDDIR)/part2/projects/project7
 p2proj8=$(BUILDDIR)/part2/projects/project8
 
 # Targets
-TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8)
+TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8) $(p3s1e1)
 
 .PHONY=all
 all: $(TARGETS)
@@ -40,6 +42,9 @@ $(p2s2e3): $(SRCDIR)/part2/section4/ex3.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(p2s2e4): $(SRCDIR)/part2/section4/ex4.c | $(BUILDDIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(p3s1e1): $(SRCDIR)/part3/section1/ex1.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # Building rules for projects
@@ -71,6 +76,8 @@ $(p2proj8): $(SRCDIR)/part2/projects/project8.c | $(BUILDDIR)
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)/part2/section{1,2,4}
 	mkdir -p $(BUILDDIR)/part2/projects
+	mkdir -p $(BUILDDIR)/part3/section{1,2}
+	mkdir -p $(BUILDDIR)/part3/projects
 
 # Remove build directory
 .PHONY=clean
