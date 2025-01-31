@@ -28,6 +28,8 @@ p4s1e6=$(BUILDDIR)/part4/section1/ex6
 p4s1e7=$(BUILDDIR)/part4/section1/ex7
 p4s1e8=$(BUILDDIR)/part4/section1/ex8
 
+p4s2e9=$(BUILDDIR)/part4/section2/ex9
+
 # Projects
 p2proj1=$(BUILDDIR)/part2/projects/project1
 p2proj2=$(BUILDDIR)/part2/projects/project2
@@ -46,7 +48,7 @@ p3proj5=$(BUILDDIR)/part3/projects/project5
 p3proj6=$(BUILDDIR)/part3/projects/project6
 
 # Targets
-TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8) $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5) $(p3s2e6) $(p3proj1) $(p3proj2) $(p3proj3) $(p3proj4) $(p3proj5) $(p3proj6) $(p4s1e1) $(p4s1e2) $(p4s1e3) $(p4s1e4) $(p4s1e5) $(p4s1e6) $(p4s1e7) $(p4s1e8)
+TARGETS=$(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8) $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5) $(p3s2e6) $(p3proj1) $(p3proj2) $(p3proj3) $(p3proj4) $(p3proj5) $(p3proj6) $(p4s1e1) $(p4s1e2) $(p4s1e3) $(p4s1e4) $(p4s1e5) $(p4s1e6) $(p4s1e7) $(p4s1e8) $(p4s2e9)
 
 .PHONY=all
 all: $(TARGETS)
@@ -101,6 +103,9 @@ $(p4s1e7): $(SRCDIR)/part4/section1/ex7.c | $(BUILDDIR)
 	$(CC) -Wall -std=c89 -g $^ -o $@
 
 $(p4s1e8): $(SRCDIR)/part4/section1/ex8.c | $(BUILDDIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(p4s2e9): $(SRCDIR)/part4/section2/ex9.c | $(BUILDDIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 # Building rules for projects
