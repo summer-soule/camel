@@ -28,7 +28,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INPUT_11D
+#define INPUT 11
 
 int main(void)
 {
