@@ -28,12 +28,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INPUT 11
+#define INPUT 12
 
 int main(void)
 {
 	int	first_sum, second_sum, total;
-	long int upcArray[INPUT_11D];
+	long int upcArray[INPUT];
 	long int upcSrc;
 	int i, j;
 	
@@ -41,27 +41,45 @@ int main(void)
 	second_sum = 0;
 
 	printf("Enter the first 11 digits of a UPC: ");
-
 	scanf("%12ld", &upcSrc);
+
 	printf("Entered number: %ld\n", upcSrc);
 
+	/* Write last number to array */
 	upcArray[10] = upcSrc % 10;
 	
-	for(i = 0, j = 9; i < 10; i++)
+	/* Check for first number 0 and write upcSrc to array by single number */
+	if(upcSrc > 9999999999)
 	{
-		if(upcSrc > 9)
-			upcArray[j] = (upcSrc /= 10) % 10;
-		else
-			upcArray[j] = upcSrc;
-		j--;
+		for(i = 0, j = 9; i < 10; i++)
+		{
+			if(upcSrc > 9)
+				upcArray[j] = (upcSrc /= 10) % 10;
+			else
+				upcArray[j] = upcSrc;
+			j--;
+		}
+	}
+	else
+	{
+		upcArray[0] = 0;
+		for(i = 1, j = 9; i < 10; i++)
+		{
+			if(upcSrc > 9)
+				upcArray[j] = (upcSrc /= 10) % 10;
+			else
+				upcArray[j] = upcSrc;
+			j--;
+		}
 	}
 
-	for(i = 0; i < 6; i++)
-		first_sum += upcArray[i];
+	/* Calculate first sum */
+	for(i = 0; i < 11; i++) if((i % 2) == 0) first_sum += upcArray[i];
 
-	for(i = 6; i < 11; i++)
-		second_sum += upcArray[i];
+	/* Calculate second sum */
+	for(i = 0; i < 11; i++) if((i % 2) == 1) second_sum += upcArray[i];
 
+	/* Calculate total */
 	total = 3 * first_sum + second_sum;
 
 	printf("Check digit: %d\n", 9 - ((total - 1) % 10));
