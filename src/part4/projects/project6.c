@@ -34,6 +34,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Expected length of input */
 #define INPUT 12
 
 int main(void)
@@ -51,29 +52,28 @@ int main(void)
 	scanf("%13ld", &upcSrc);
 	printf("Entered number: %ld\n", upcSrc);
 
+	/* Write last number to array */
 	upcArray[11] = upcSrc % 10;
-	
-	for(i = 0, j = 10; i < 11; i++)
-	{
-		if(upcSrc > 9)
-			upcArray[j] = (upcSrc /= 10) % 10;
-		else
-			upcArray[j] = upcSrc;
-		j--;
+
+	/* Check for first number 0 and write upcSrc to array by single number */
+	if(upcSrc > (10e10-1))
+		for(i = 0, j = 10; i < 11; i++, j--) {
+			if(upcSrc > 9) upcArray[j] = (upcSrc /= 10) % 10;
+			else upcArray[j] = upcSrc;
+		}
+	else {
+		upcArray[0] = 0;
+		for(i = 0, j = 10; i < 10; i++, j--) {
+			if(upcSrc > 9) upcArray[j] = (upcSrc /= 10) % 10;
+			else upcArray[j] = upcSrc;
+		}
 	}
 
-	for(i = 0; i < 12; i++)
-		if((i % 2) != 0)
-		{
-			first_sum += upcArray[i];
-		}
+	/* Calculate first sum */
+	for(i = 0; i < 12; i++) if((i % 2) == 1) first_sum += upcArray[i];
 
-
-	for(i = 0; i < 12; i++)
-		if((i % 2) == 0)
-		{
-			second_sum += upcArray[i];
-		}
+	/* Calculate second sum */
+	for(i = 0; i < 12; i++) if((i % 2) == 0) second_sum += upcArray[i];
 
 	total = 3 * first_sum + second_sum;
 
