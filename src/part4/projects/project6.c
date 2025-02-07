@@ -55,7 +55,7 @@ int main(void)
 	/* Write last number to array */
 	upcArray[11] = upcSrc % 10;
 
-	/* Check for first number 0 and write upcSrc to array by single number */
+	/* Check for first number is 0 and write upcSrc to an array */
 	if(upcSrc > (10e10-1))
 		for(i = 0, j = 10; i < 11; i++, j--) {
 			if(upcSrc > 9) upcArray[j] = (upcSrc /= 10) % 10;
