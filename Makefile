@@ -77,11 +77,13 @@ p4proj4=$(BUILDDIR)/part4/projects/project4
 p4proj5=$(BUILDDIR)/part4/projects/project5
 p4proj6=$(BUILDDIR)/part4/projects/project6
 
+p5proj1=$(BUILDDIR)/part5/projects/project1
+
 # Targets
 PART2 = $(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8)
 PART3 = $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5) $(p3s2e6) $(p3proj1) $(p3proj2) $(p3proj3) $(p3proj4) $(p3proj5) $(p3proj6)
 PART4 =  $(p4s1e1) $(p4s1e2) $(p4s1e3) $(p4s1e4) $(p4s1e5) $(p4s1e6) $(p4s1e7) $(p4s1e8) $(p4s2e9) $(p4s2e10) $(p4s3e11) $(p4s3e12) $(p4s4e14) $(p4s5e15) $(p4proj1) $(p4proj2) $(p4proj3) $(p4proj4) $(p4proj5) $(p4proj6)
-PART5 = $(p5s1e1) $(p5s1e2) $(p5s1e3) $(p5s1e4) $(p5s2e5) $(p5s2e6) $(p5s2e7) $(p5s2e8) $(p5s2e9) $(p5s3e10) $(p5s3e11)
+PART5 = $(p5s1e1) $(p5s1e2) $(p5s1e3) $(p5s1e4) $(p5s2e5) $(p5s2e6) $(p5s2e7) $(p5s2e8) $(p5s2e9) $(p5s3e10) $(p5s3e11) $(p5proj1)
 
 .PHONY=all
 all: $(PART2) $(PART3) $(PART4) $(PART5)
@@ -248,6 +250,9 @@ $(p4proj5): $(SRCDIR)/part4/projects/project5.c | $(BUILDDIR)
 	$(CC) $(CFLAGS99) $^ -o $@
 
 $(p4proj6): $(SRCDIR)/part4/projects/project6.c | $(BUILDDIR)
+	$(CC) $(CFLAGS99) $^ -o $@
+
+$(p5proj1): $(SRCDIR)/part5/projects/project1.c | $(BUILDDIR)
 	$(CC) $(CFLAGS99) $^ -o $@
 
 # Create build dir
