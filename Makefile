@@ -70,6 +70,7 @@ p6s4e11=$(BUILDDIR)/part6/section4/ex11
 p6s4e12=$(BUILDDIR)/part6/section4/ex12
 
 p6s5e13=$(BUILDDIR)/part6/section5/ex13
+p6s5e14=$(BUILDDIR)/part6/section5/ex14
 
 # Projects
 p2proj1=$(BUILDDIR)/part2/projects/project1
@@ -112,7 +113,7 @@ PART2 = $(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3)
 PART3 = $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5) $(p3s2e6) $(p3proj1) $(p3proj2) $(p3proj3) $(p3proj4) $(p3proj5) $(p3proj6)
 PART4 =  $(p4s1e1) $(p4s1e2) $(p4s1e3) $(p4s1e4) $(p4s1e5) $(p4s1e6) $(p4s1e7) $(p4s1e8) $(p4s2e9) $(p4s2e10) $(p4s3e11) $(p4s3e12) $(p4s4e14) $(p4s5e15) $(p4proj1) $(p4proj2) $(p4proj3) $(p4proj4) $(p4proj5) $(p4proj6)
 PART5 = $(p5s1e1) $(p5s1e2) $(p5s1e3) $(p5s1e4) $(p5s2e5) $(p5s2e6) $(p5s2e7) $(p5s2e8) $(p5s2e9) $(p5s3e10) $(p5s3e11) $(p5proj1) $(p5proj2) $(p5proj3) $(p5proj4) $(p5proj5) $(p5proj6) $(p5proj7) $(p5proj8) $(p5proj9) $(p5proj10) $(p5proj11)
-PART6 = $(p6s1e1) $(p6s2e2) $(p6s3e3) $(p6s3e4) $(p6s3e5) $(p6s3e6) $(p6s3e7) $(p6s3e8) $(p6s3e9) $(p6s4e10) $(p6s4e11) $(p6s4e12) $(p6s5e13)
+PART6 = $(p6s1e1) $(p6s2e2) $(p6s3e3) $(p6s3e4) $(p6s3e5) $(p6s3e6) $(p6s3e7) $(p6s3e8) $(p6s3e9) $(p6s4e10) $(p6s4e11) $(p6s4e12) $(p6s5e13) $(p6s5e14)
 
 .PHONY=all
 all: $(PART2) $(PART3) $(PART4) $(PART5) $(PART6)
@@ -257,6 +258,9 @@ $(p6s4e12): $(SRCDIR)/part6/section4/ex12.c | $(BUILDDIR)
 	$(CC) $(CFLAGS89) $^ -o $@
 
 $(p6s5e13): $(SRCDIR)/part6/section5/ex13.c | $(BUILDDIR)
+	$(CC) $(CFLAGS89) $^ -o $@
+
+$(p6s5e14): $(SRCDIR)/part6/section5/ex14.c | $(BUILDDIR)
 	$(CC) $(CFLAGS89) $^ -o $@
 
 # Building rules for projects
