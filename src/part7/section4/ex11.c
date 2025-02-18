@@ -24,8 +24,7 @@ int main(void)
 	f = 3.2f;
 	d = 5.0f;
 
-	printf("Expression has int type: %f\n", i * f / d);
-	printf("type: double\n");
+	printf("Expression has double type: %f\n", i * f / d);
 
 	exit(EXIT_SUCCESS);
 }
