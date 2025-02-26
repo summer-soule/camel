@@ -153,6 +153,7 @@ p7proj8=$(BUILDDIR)/part7/projects/project8
 p7proj9=$(BUILDDIR)/part7/projects/project9
 p7proj10=$(BUILDDIR)/part7/projects/project10
 p7proj11=$(BUILDDIR)/part7/projects/project11
+p7proj12=$(BUILDDIR)/part7/projects/project12
 
 # Targets
 PART2 = $(p2s1e1) $(p2s2e2) $(p2s2e3) $(p2s2e4) $(p2proj1) $(p2proj2) $(p2proj3) $(p2proj4) $(p2proj5) $(p2proj6) $(p2proj7) $(p2proj8)
@@ -160,7 +161,7 @@ PART3 = $(p3s1e1) $(p3s1e2) $(p3s2e4) $(p3s2e5) $(p3s2e6) $(p3proj1) $(p3proj2) 
 PART4 =  $(p4s1e1) $(p4s1e2) $(p4s1e3) $(p4s1e4) $(p4s1e5) $(p4s1e6) $(p4s1e7) $(p4s1e8) $(p4s2e9) $(p4s2e10) $(p4s3e11) $(p4s3e12) $(p4s4e14) $(p4s5e15) $(p4proj1) $(p4proj2) $(p4proj3) $(p4proj4) $(p4proj5) $(p4proj6)
 PART5 = $(p5s1e1) $(p5s1e2) $(p5s1e3) $(p5s1e4) $(p5s2e5) $(p5s2e6) $(p5s2e7) $(p5s2e8) $(p5s2e9) $(p5s3e10) $(p5s3e11) $(p5proj1) $(p5proj2) $(p5proj3) $(p5proj4) $(p5proj5) $(p5proj6) $(p5proj7) $(p5proj8) $(p5proj9) $(p5proj10) $(p5proj11)
 PART6 = $(p6s1e1) $(p6s2e2) $(p6s3e3) $(p6s3e4) $(p6s3e5) $(p6s3e6) $(p6s3e7) $(p6s3e8) $(p6s3e9) $(p6s4e10) $(p6s4e11) $(p6s4e12) $(p6s5e13) $(p6s5e14) $(p6proj1) $(p6proj2) $(p6proj3) $(p6proj4) $(p6proj5) $(p6proj6) $(p6proj7) $(p6proj8) $(p6proj9) $(p6proj10) $(p6proj11) $(p6proj12)
-PART7 = $(p7s1e1) $(p7s2e2) $(p7s2e3) $(p7s3e4) $(p7s3e5) $(p7s3e6) $(p7s3e7) $(p7s3e8) $(p7s4e9) $(p7s4e10) $(p7s4e11) $(p7s4e12) $(p7s4e13) $(p7s4e14) $(p7s5e15) $(p7proj1) $(p7proj2) $(p7proj3) $(p7proj4) $(p7proj5) $(p7proj6) $(p7proj7) $(p7proj8) $(p7proj9) $(p7proj10) $(p7proj11)
+PART7 = $(p7s1e1) $(p7s2e2) $(p7s2e3) $(p7s3e4) $(p7s3e5) $(p7s3e6) $(p7s3e7) $(p7s3e8) $(p7s4e9) $(p7s4e10) $(p7s4e11) $(p7s4e12) $(p7s4e13) $(p7s4e14) $(p7s5e15) $(p7proj1) $(p7proj2) $(p7proj3) $(p7proj4) $(p7proj5) $(p7proj6) $(p7proj7) $(p7proj8) $(p7proj9) $(p7proj10) $(p7proj11) $(p7proj12)
 
 .PHONY=all
 all: $(PART2) $(PART3) $(PART4) $(PART5) $(PART6) $(PART7)
@@ -516,6 +517,9 @@ $(p7proj10): $(SRCDIR)/part7/projects/project10.c | $(BUILDDIR)
 	$(CC) $(CFLAGS99) $^ -o $@
 
 $(p7proj11): $(SRCDIR)/part7/projects/project11.c | $(BUILDDIR)
+	$(CC) $(CFLAGS99) $^ -o $@
+
+$(p7proj12): $(SRCDIR)/part7/projects/project12.c | $(BUILDDIR)
 	$(CC) $(CFLAGS99) $^ -o $@
 
 # Create build dir
