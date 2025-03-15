@@ -33,7 +33,7 @@ int main(void)
 	c = 2 * c - 1;
 	printf("c = 2 * c - 1: %c\n", c);
 	putchar(c);
-	printf(c);
+//	printf(c);	// illegal
 
 	exit(EXIT_SUCCESS);
 }

@@ -2,33 +2,48 @@ SRCDIR := src
 BUILDDIR := build
 
 CC := /usr/bin/gcc
-CFLAGS89 := -Wall -std=c89 -g
-CFLAGS99 := -Wall -std=c99 -g
+CFLAGS := -Wall -std=c99 -g
 
-# Автоматический поиск исходников
+# Auto search source files
 EXERCISE_SRC := $(shell find $(SRCDIR) -type f -path '*/section*/ex*.c')
 PROJECT_SRC := $(shell find $(SRCDIR) -type f -path '*/projects/project*.c')
 
-# Генерация целей
-EXERCISE_TARGETS := $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%, $(EXERCISE_SRC))
-PROJECT_TARGETS := $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%, $(PROJECT_SRC))
+# Generate targets
+EXERCISE_TARGETS_ALL := $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%, $(EXERCISE_SRC))
+PROJECT_TARGETS_ALL := $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%, $(PROJECT_SRC))
+
+# C89 targets
+EXERCISE_TARGETS_C89 := $(BUILDDIR)/part4/section1/ex3 $(BUILDDIR)/part4/section1/ex5
+
+# C99 targets
+define EXERCISE_TARGETS_C99_EXCLUDE
+$(BUILDDIR)/part2/section8/ex10
+$(BUILDDIR)/part2/section8/ex9
+$(BUILDDIR)/part2/section8/ex8
+$(BUILDDIR)/part2/section7/ex6
+$(BUILDDIR)/part2/section7/ex7
+$(BUILDDIR)/part2/section7/ex5
+$(BUILDDIR)/part3/section2/ex3
+$(BUILDDIR)/part4/section3/ex13
+endef
+
+EXERCISE_TARGETS_C99 := $(filter-out $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99_EXCLUDE), $(EXERCISE_TARGETS_ALL))
 
 .PHONY: all clean
 
-all: $(EXERCISE_TARGETS) $(PROJECT_TARGETS)
+all: $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99) $(PROJECT_TARGETS_ALL)
 
-# Общее правило для упражнений
+# Generic rule
 $(BUILDDIR)/%: $(SRCDIR)/%.c
 	@mkdir -p $(@D)
-ifeq (section,$(findstring section,$<))
-	$(CC) $(CFLAGS89) $< -o $@
-else
-	$(CC) $(CFLAGS99) $< -o $@
-endif
+	$(CC) $(CFLAGS) $< -o $@ $(LDLIBS)
 
-# Особые случаи с библиотеками
+# Special case for LDLIBS
 $(BUILDDIR)/part2/projects/project3: LDLIBS += -lm
 $(BUILDDIR)/part2/projects/project5: LDLIBS += -lm
+
+# Special case for C89
+$(EXERCISE_TARGETS_C89): CFLAGS := -Wall -std=c89 -g
 
 clean:
 	rm -rf $(BUILDDIR)
