@@ -43,7 +43,7 @@ display_help() {
 addheader() {
 	if [ -f ${target} ]; then
 		echo "File $target exists! Adding header..."
-		echo $header | cat - "$target" | tee $target
+		echo "$header" | cat - "$target" | tee $target
 		echo "Header added! Exiting..."
 	fi
 }
