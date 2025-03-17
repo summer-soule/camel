@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# What: add header into exercise or programming project source file
+# What: add header at beggining of exercise or programming project source file
 # Why:	lazy to add it by hand
 #
 # TODO: 
