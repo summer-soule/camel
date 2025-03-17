@@ -4,7 +4,7 @@
  * values. Include an initializer that makes the first and last values
  * true; all ither values should be false.
  *
- * A: _Bool weekend[A_SIZE] = {[0] = true, [6] = true};
+ * A: _Bool weekend[A_SIZE] = {true, false, false, false, false, false, true};
  *
  * Date: 2025-03-17
  * Time: 11:51 AM
@@ -18,7 +18,7 @@
 #define A_SIZE 7
 
 int main(void) {
-	_Bool weekend[A_SIZE] = {[0] = true, [6] = true};
+	_Bool weekend[A_SIZE] = {true, false, false, false, false, false, true};
 
 	for (int i = 0; i < A_SIZE; i++)
 		printf("weekend[%d] = %d\n", i, weekend[i]);
