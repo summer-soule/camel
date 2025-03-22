@@ -56,12 +56,15 @@
 #define FIELD_Y	10
 
 #define LEFT	-1
-#define RIGHT	1
-#define UP		1
+#define RIGHT	 1
+#define UP		 1
 #define DOWN	-1
 
-#define OUT_OF_BOUND (x < 0 || x > FIELD_X || y < 0 || y > FIELD_Y)
-#define MOVE_AVAILABLE (
+#define OUT_OF_BOUND 	(x < 0 || x > FIELD_X || y < 0 || y > FIELD_Y)
+#define NO_WAY			(input[y+1][x] != '.' &&
+						input[y-1][x] != '.' &&
+						input[y][x+1] != '.' &&
+						input[y][x-1] != '.')
 
 int main(void) {
 	char playground[FIELD_Y][FIELD_X];
@@ -73,41 +76,56 @@ int main(void) {
 		for (int j = 0; j < FIELD_X; j++)
 			playground[i][j] = '.';
 
+	// Set starting position
 	int x, y;
 	x = y = 0;
 
 
+	// Mark starting position
 	playground[y][x] = label++;
 
+	// Play the game
+	srand((unsigned) time(NULL));
 	while (can_move && label <= 'Z') {
-		srand(time(NULL));
+
+
+		// Check left
+		(
+		// Check top
+		// Check right
+		// Check bottom
+
+
 		switch (rand() % 4) {
 			case 0:
-				if (playground[y][x+LEFT] == '.') x += LEFT;
+				if (playground[y][x+LEFT] == '.' && (x + LEFT) > 0)
+					x += LEFT;
 				else continue;
 				break;
 			case 1:
-				if (playground[y][x+RIGHT] == '.') x += RIGHT;
+				if (playground[y][x+RIGHT] == '.' && (x + RIGHT) < FIELD_X)
+					x += RIGHT;
 				else continue;
 				break;
 			case 2:
-				if (playground[y+UP][x] == '.') x += UP;
+				if (playground[y+UP][x] == '.' && (y + UP) < FIELD_Y)
+					y += UP;
 				else continue;
 				break;
 			case 3:
-				if (playground[y+DOWN][x] == '.') x += DOWN;
+				if (playground[y+DOWN][x] == '.' && (y + DOWN) > 0)
+					y += DOWN;
 				else continue;
 				break;
 			default:
 				printf("Game over with result: %c!\n", label);
 				exit(EXIT_FAILURE);
 		}
-
 		if (OUT_OF_BOUND) continue;
-
 		playground[y][x] = label++;
 	}
 
+	// Print game results
 	for (int i = 0; i < FIELD_Y; i++) {
 		for (int j = 0; j < FIELD_Y; j++)
 			printf("%c ", playground[i][j]);
