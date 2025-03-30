@@ -50,14 +50,11 @@ selection_sort(int a[], int n)
 	int tmp = 0;
 
 	for (int i = 0; i < n; i++) {
-		printf("processing a[%d]: %d\n", i, a[i]);
 		if (a[i] > a[largest]) {
-			printf("found largest at %d, a[%d]: %d\n", i, i, a[i]);
 			largest = i;
 		}
 	}
 
-	printf("swap a[%d]: %d with a[%d]: %d\n", largest, a[largest], n-1, a[n-1]);
 	tmp = a[largest];
 	a[largest] = a[n-1];
 	a[n-1] = tmp;
