@@ -42,6 +42,7 @@ $(BUILDDIR)/%: $(SRCDIR)/%.c
 # Special case for LDLIBS
 $(BUILDDIR)/part2/projects/project3: LDLIBS += -lm
 $(BUILDDIR)/part2/projects/project5: LDLIBS += -lm
+$(BUILDDIR)/part9/projects/project6: LDLIBS += -lm
 
 # Special case for C89
 $(EXERCISE_TARGETS_C89): CFLAGS := -Wall -std=c89 -g
