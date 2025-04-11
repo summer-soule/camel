@@ -26,7 +26,7 @@ make -jN
 ## Run
 `./build/part{N}/section{M}/ex{K}`
 
-replace N, M, and K with desired
+replace N, M, K or any with desired
 
 `./build/part{N}/projects/project{L}`
 ## Build and Run specific exercise/project (sh, bash, zsh, etc.)
