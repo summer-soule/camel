@@ -17,7 +17,7 @@
 int *find_largest(int a[], int n);
 
 int main(void) {
-	int arr[ARR_L] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int arr[ARR_L] = {9, 1, 2, 3, 4, 5, 6, 7, 8, 0};
 
 	printf("Largest: %d\n", *find_largest(arr, ARR_L-1));
 
@@ -26,11 +26,11 @@ int main(void) {
 
 int *find_largest(int a[], int n)
 {
-	int max = a[0], i = 0;
+	int *max = a, i = 0;
 
 	while (i++ < n)
-		if (*(a+i) > max)
-			max = *(a+i);
+		if (*(a+i) > *max)
+			max = a+i;
 
-	return a+max;
+	return max;
 }
