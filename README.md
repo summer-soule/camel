@@ -8,6 +8,16 @@ Could be a complete mess but idc, honestly. Just learning.
 
 Feel free to create an issue if something wrong or your computer somehow become
 a potato.
+## Structure
+use [tree](https://oldmanprogrammer.net/source.php?dir=projects/tree) || `ls -alGR build/` || `ls -alGR src/`
+```
+*/part{N}/section{M}/ex{K}.c
+*/part{N}/projects/project{L}.c
+```
+inside *src/* and *build/* above structure remains the same
+>src/ for source files
+>
+>build/ for binary files
 ## Build
 Just use `make`. N is the number of compiling jobs needs to be run to speed up the building if your CPU not an ancient artifact. Don't waste time on trash.
 ```
@@ -23,15 +33,4 @@ replace N, M, and K with desired
 ```
 make build/part{N}/section{M}/ex{K} && ./$_
 make build/part{N}/projects/project{L} && ./$_
-```
-## Structure
-use [tree](https://oldmanprogrammer.net/source.php?dir=projects/tree) || `ls -alGR build/` || `ls -alGR src/`
-```
-*part{N}/section{M}/ex{K}.c*
-*part{N}/projects/project{L}.c*
-```
-in *src/* and *build/* above structure remains the same
-```
-src/ for source files
-build/ for binary files which is able to run
 ```
