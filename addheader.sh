@@ -6,7 +6,8 @@
 # TODO: 
 # - check if header already exists (do nothing if true)
 
-
+DIR=$(pwd)
+TARGET="./src/"
 
 display_help() {
 	echo "$(basename "$0") usage:"
@@ -27,8 +28,14 @@ display_help() {
 }
 
 addheader_ex() {
-	if [ -f ${target} ]; then
-		local header_ex="/*
+if [ ! -f ${TARGET} ]; then
+	echo "target ${TARGET} not found! creating new..."
+	mkdir -p $(dirname ${TARGET})
+	touch ${TARGET}
+fi
+
+if [ $(stat -c %s "${TARGET}") -eq 0 ]; then 
+	local header_ex="/*
  *
  * Task:
  *
@@ -43,15 +50,23 @@ addheader_ex() {
 int main(void) {
 	exit(EXIT_SUCCESS);
 }"
-		echo "File $target exists! Adding header..."
-		echo "$header_ex" | cat - "$target" | tee $target
+		echo "File ${TARGET} exists! Adding header..."
+		echo "$header_ex" | cat - "${TARGET}" | tee $TARGET
 		echo "Header added! Exiting..."
-	fi
+else
+	echo "target ${TARGET} exists and not empty!"
+fi
 }
 
 addheader_proj() {
-	if [ -f ${target} ]; then
-		local header_proj="/*
+if [ ! -f ${TARGET} ]; then
+	echo "target ${TARGET} not found! creating new..."
+	mkdir -p $(dirname ${TARGET})
+	touch ${TARGET}
+fi
+
+if [ $(stat -c %s "${TARGET}") -eq 0 ]; then 
+	local header_proj="/*
  *
  * Project "$1".
  *
@@ -68,13 +83,12 @@ addheader_proj() {
 int main(void) {
 	exit(EXIT_SUCCESS);
 }"
-		echo "File $target exists! Adding header..."
-		echo "$header_proj" | cat - "$target" | tee $target
+		echo "File ${TARGET} exists! Adding header..."
+		echo "$header_proj" | cat - "${TARGET}" | tee ${TARGET}
 		echo "Header added! Exiting..."
 	fi
 }
 
-target="./src/"
 
 while getopts ":p:s:P:e:h" option; do
 	case "$option" in
@@ -83,17 +97,17 @@ while getopts ":p:s:P:e:h" option; do
 			exit 0
 			;;
 		p) 
-			target+="part${OPTARG}/"
+			TARGET+="part${OPTARG}/"
 			;;
 		s) 
-			target+="section${OPTARG}/"
+			TARGET+="section${OPTARG}/"
 			;;
 		e) 
-			target+="ex${OPTARG}.c"
+			TARGET+="ex${OPTARG}.c"
 			addheader_ex
 			;;
 		P) 
-			target+="projects/project${OPTARG}.c"
+			TARGET+="projects/project${OPTARG}.c"
 			echo $proj_num
 			addheader_proj "${OPTARG}"
 			;;
