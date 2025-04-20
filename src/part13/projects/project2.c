@@ -30,8 +30,9 @@ int read_line(char str[], int n);
 
 int main(void) {
 	char reminders[MAX_REMIND][MSG_LEN+3];
-	char day_str[3], msg_str[MSG_LEN+1];
+	char day_str[3], time_str[6], msg_str[MSG_LEN+1];
 	int day, i, j, num_remind = 0;
+	int hh = 0, mm = 0;
 
 	for (;;) {
 		if (num_remind == MAX_REMIND) {
@@ -39,8 +40,9 @@ int main(void) {
 			break;
 		}
 		
-		printf("Enter day and reminder: ");
+		printf("Enter day, time (hh:mm) and reminder: ");
 		scanf("%2d", &day);
+		scanf("%02d:%02d", &hh, &mm); 
 
 		// (a) implementation
 		if (day < 0 || day > 31) {
@@ -48,9 +50,22 @@ int main(void) {
 			continue;
 		}
 
+		// (b.1) check for time format bounds
+		if (hh > 24 || hh < 0) {
+			printf("err: hours value is out of range (0-24)\n");
+			continue;
+		}
+
+		if (mm > 60 || hh < 0) {
+			printf("err: minutes value is out of range (0-60)\n");
+			continue;
+		}
+
+		// check for end of input
 		if (day == 0)
 			break;
 
+		sprintf(time_str, "%02d:%02d", hh, mm);
 		sprintf(day_str, "%2d", day);
 		read_line(msg_str, MSG_LEN);
 
@@ -60,7 +75,8 @@ int main(void) {
 		for (j = num_remind; j > i; j--)
 			strcpy(reminders[j], reminders[j-1]);
 
-		strcpy(reminders[i], day_str);
+		strcpy(reminders[i], time_str);
+		strcat(reminders[i], day_str);
 		strcat(reminders[i], msg_str);
 
 		num_remind++;
