@@ -31,6 +31,7 @@ $(BUILDDIR)/part10/section4/ex2
 $(BUILDDIR)/part10/section4/ex3
 $(BUILDDIR)/part14/section4/ex12
 $(BUILDDIR)/part14/section4/ex14
+$(BUILDDIR)/part14/section5/ex16
 endef
 
 EXERCISE_TARGETS_C99 := $(filter-out $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99_EXCLUDE), $(EXERCISE_TARGETS_ALL))
