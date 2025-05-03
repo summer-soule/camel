@@ -14,23 +14,23 @@ use [tree](https://oldmanprogrammer.net/source.php?dir=projects/tree) || `ls -al
 */part{N}/section{M}/ex{K}.c
 */part{N}/projects/project{L}.c
 ```
-inside *src/* and *build/* above structure remains the same
+inside *src/* and *bin/* above structure remains the same
 >src/ for source files
 >
->build/ for binary files
+>bin/ for binary files
 ## Build
 Just use `make`. N is the number of compiling jobs needs to be run to speed up the building if your CPU not an ancient artifact. Don't waste time on trash.
 ```
 make -jN
 ```
 ## Run
-`./build/part{N}/section{M}/ex{K}`
+`./bin/part{N}/section{M}/ex{K}`
 
 replace N, M, K or any with desired
 
-`./build/part{N}/projects/project{L}`
+`./bin/part{N}/projects/project{L}`
 ## Build and Run specific exercise/project (sh, bash, zsh, etc.)
 ```
-make build/part{N}/section{M}/ex{K} && ./$_
-make build/part{N}/projects/project{L} && ./$_
+make bin/part{N}/section{M}/ex{K} && ./$_
+make bin/part{N}/projects/project{L} && ./$_
 ```
