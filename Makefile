@@ -8,7 +8,7 @@ CFLAGS := -Wall -std=c99 -g
 EXERCISE_SRC := $(shell find $(SRCDIR) -type f -path '*/section*/ex*.c')
 PROJECT_SRC := $(shell find $(SRCDIR) -type f -path '*/projects/project*.c')
 
-# Search for Makefiles which related to multifile programs (part 15)
+# Search for Makefiles which related to multifile programs (for example, part 15)
 MODULAR_TARGETS := $(shell dirname `find $(SRCDIR) -type f -path '**/Makefile'`)
 EXERCISE_MODULAR_TARGETS := $(patsubst $(SRCDIR)/%, $(BINDIR)/%, $(MODULAR_TARGETS))
 
@@ -41,6 +41,7 @@ $(BINDIR)/part14/section4/ex14
 $(BINDIR)/part14/section5/ex16
 $(BINDIR)/part15/section1/ex1
 $(BINDIR)/part15/section2/ex2
+$(BINDIR)/part15/section4/ex6
 endef
 
 EXERCISE_TARGETS_C99 := $(filter-out $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99_EXCLUDE), $(EXERCISE_TARGETS_ALL))
