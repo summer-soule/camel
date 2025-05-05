@@ -9,11 +9,12 @@ EXERCISE_SRC := $(shell find $(SRCDIR) -type f -path '*/section*/ex*.c')
 PROJECT_SRC := $(shell find $(SRCDIR) -type f -path '*/projects/project*.c')
 
 # Search for Makefiles which related to multifile programs (for example, part 15)
-MODULAR_TARGETS := $(shell dirname `find $(SRCDIR) -type f -path '**/Makefile'`)
+MODULAR_TARGETS := $(shell dirname `find $(SRCDIR) -type f -path '*Makefile'`)
 EXERCISE_MODULAR_TARGETS := $(patsubst $(SRCDIR)/%, $(BINDIR)/%, $(MODULAR_TARGETS))
 
 EXCLUDE_MODULE_SRC := $(shell find $(MODULAR_TARGETS) -type f -path '*.c')
 EXERCISE_SRC := $(filter-out $(EXCLUDE_MODULE_SRC), $(EXERCISE_SRC))
+PROJECT_SRC := $(filter-out $(EXCLUDE_MODULE_SRC), $(PROJECT_SRC))
 
 # Generate targets
 EXERCISE_TARGETS_ALL := $(patsubst $(SRCDIR)/%.c, $(BINDIR)/%, $(EXERCISE_SRC))
@@ -51,9 +52,9 @@ EXERCISE_TARGETS_C99 := $(filter-out $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_
 all: $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99) $(PROJECT_TARGETS_ALL) $(EXERCISE_MODULAR_TARGETS)
 
 # Rule for modular programs
-$(EXERCISE_MODULAR_TARGETS): $(BINDIR)/%: $(SRCDIR)/%/Makefile
+$(EXERCISE_MODULAR_TARGETS): $(BINDIR)/%: $(SRCDIR)/%
 	@mkdir -p $(dir $@)
-	$(MAKE) -C $(dir $<) BUILD_DIR=`pwd`/$(dir $@)
+	$(MAKE) -C $< BUILD_DIR=`pwd`/$(dir $@)
 
 # Generic rule
 $(BINDIR)/%: $(SRCDIR)/%.c
