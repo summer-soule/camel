@@ -2,7 +2,8 @@
  *
  * Project 1.
  *
- * Task: The justify program of Section 15.3 justifies lines by inserting
+ * Task:
+ *		 The justify program of Section 15.3 justifies lines by inserting
  * 		 extra spaces between words. The way the write_line function
  * 		 currently works, the words closer to the end of a line tend to
  * 		 have slightly wider gaps between them than the words at the
