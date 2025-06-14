@@ -1,0 +1,9 @@
+void new_cmd(void);
+void open_cmd(void);
+void close_cmd(void);
+void close_all_cmd(void);
+void save_cmd(void);
+void save_as_cmd(void);
+void save_all_cmd(void);
+void print_cmd(void);
+void exit_cmd(void);
