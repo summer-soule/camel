@@ -34,8 +34,17 @@
 #define WORD_LEN 20
 
 int main(void) {
-	
-	while ()
+	char **words = NULL;
+	char *p = NULL;
+
+	words = realloc(words, sizeof()
+
+	for (int i = 0; ; i++) {
+        if ((p = malloc(sizeof(char)))) {
+			printf("err: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
+	}
 
 	exit(EXIT_SUCCESS);
 }
