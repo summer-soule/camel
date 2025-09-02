@@ -37,7 +37,7 @@ int main(void) {
 	char **words = NULL;
 	char *p = NULL;
 
-	words = realloc(words, sizeof()
+//	words = realloc(words, sizeof());
 
 	for (int i = 0; ; i++) {
         if ((p = malloc(sizeof(char)))) {
