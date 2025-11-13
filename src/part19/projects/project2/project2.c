@@ -1,6 +1,6 @@
 /*
  *
- * Project 1.
+ * Project 2.
  *
  * Task:
  *		Modify Programming Project 6 from Chapter 10 so that it uses
