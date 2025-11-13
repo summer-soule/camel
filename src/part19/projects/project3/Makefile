@@ -12,5 +12,5 @@ $(p19proj3) : $(OBJ)
 project3.o: project3.c stackADT.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-stackADT.o: stackADT3.c stackADT.h
+stackADT3.o: stackADT3.c stackADT.h
 	$(CC) $(CFLAGS) -c $< -o $@
