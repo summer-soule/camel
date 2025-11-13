@@ -1,6 +1,6 @@
 /*
  *
- * Project 1.
+ * Project 5.
  *
  * Task:
  *		Starting from the queue.h header of Exercise 1, create a file
