@@ -1,6 +1,6 @@
 /*
  *
- * Project 1.
+ * Project 3.
  *
  * Task:
  *		Modify the stackADT3.c file of Section 19.4 by adding an int member
