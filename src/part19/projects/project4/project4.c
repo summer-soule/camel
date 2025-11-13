@@ -1,6 +1,6 @@
 /*
  *
- * Project 1.
+ * Project 4.
  *
  * Task:
  *		Modify the stackADT.h and stackADT3.c files of Section 19.4
