@@ -3,7 +3,7 @@
 # What: add header at beggining of exercise or programming project source file
 # Why:	lazy to add it by hand
 #
-# TODO: 
+# TODO:
 # - check if header already exists (do nothing if true)
 
 DIR=$(pwd)
@@ -34,7 +34,7 @@ if [ ! -f ${TARGET} ]; then
 	touch ${TARGET}
 fi
 
-if [ $(stat -c %s "${TARGET}") -eq 0 ]; then 
+if [ $(stat -c %s "${TARGET}") -eq 0 ]; then
 	local header_ex="/*
  *
  * Task:
@@ -65,7 +65,7 @@ if [ ! -f ${TARGET} ]; then
 	touch ${TARGET}
 fi
 
-if [ $(stat -c %s "${TARGET}") -eq 0 ]; then 
+if [ $(stat -c %s "${TARGET}") -eq 0 ]; then
 	local header_proj="/*
  *
  * Project "$1".
@@ -96,17 +96,17 @@ while getopts ":p:s:P:e:h" option; do
 			display_help
 			exit 0
 			;;
-		p) 
+		p)
 			TARGET+="part${OPTARG}/"
 			;;
-		s) 
+		s)
 			TARGET+="section${OPTARG}/"
 			;;
-		e) 
+		e)
 			TARGET+="ex${OPTARG}.c"
 			addheader_ex
 			;;
-		P) 
+		P)
 			TARGET+="projects/project${OPTARG}.c"
 			echo $proj_num
 			addheader_proj "${OPTARG}"
@@ -115,7 +115,7 @@ while getopts ":p:s:P:e:h" option; do
 			echo "Option -${OPTARG} requires an argument."
 			exit 1
 			;;
-		?) 
+		?)
 			echo "Invalid option: -${OPTARG}."
 			exit 1
 			;;
