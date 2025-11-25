@@ -20,10 +20,10 @@ PROJECT_SRC := $(filter-out $(EXCLUDE_MODULE_SRC), $(PROJECT_SRC))
 EXERCISE_TARGETS_ALL := $(patsubst $(SRCDIR)/%.c, $(BINDIR)/%, $(EXERCISE_SRC))
 PROJECT_TARGETS_ALL := $(patsubst $(SRCDIR)/%.c, $(BINDIR)/%, $(PROJECT_SRC))
 
-# C89 targets
+# exclude C89 targets
 EXERCISE_TARGETS_C89 := $(BINDIR)/part4/section1/ex3 $(BINDIR)/part4/section1/ex5
 
-# C99 targets
+# exclude C99 targets
 define EXERCISE_TARGETS_C99_EXCLUDE
 $(BINDIR)/part2/section8/ex10
 $(BINDIR)/part2/section8/ex9
@@ -53,6 +53,7 @@ $(BINDIR)/part19/section1/ex1
 $(BINDIR)/part19/section3/ex5
 $(BINDIR)/part21/section1/ex3
 $(BINDIR)/part21/section1/ex4
+$(BINDIR)/part21/section1/ex6
 endef
 
 EXERCISE_TARGETS_C99 := $(filter-out $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99_EXCLUDE), $(EXERCISE_TARGETS_ALL))
