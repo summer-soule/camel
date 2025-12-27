@@ -86,38 +86,41 @@ int main(void) {
 		echo "File ${TARGET} exists! Adding header..."
 		echo "$header_proj" | cat - "${TARGET}" | tee ${TARGET}
 		echo "Header added! Exiting..."
-	fi
+fi
+
+#if [MODULE]; then
+#	local makefile_proj="CC := /usr/bin/gcc
+#CFLAGS := -Wall -std=c99 -g -O0
 }
 
-
-while getopts ":p:s:P:e:h" option; do
-	case "$option" in
-		h)
-			display_help
-			exit 0
-			;;
-		p)
-			TARGET+="part${OPTARG}/"
-			;;
-		s)
-			TARGET+="section${OPTARG}/"
-			;;
-		e)
-			TARGET+="ex${OPTARG}.c"
-			addheader_ex
-			;;
-		P)
-			TARGET+="projects/project${OPTARG}.c"
-			echo $proj_num
-			addheader_proj "${OPTARG}"
-			;;
-		:)
-			echo "Option -${OPTARG} requires an argument."
-			exit 1
-			;;
-		?)
+	while getopts ":p:s:P:e:h" option; do
+		case "$option" in
+			h)
+				display_help
+				exit 0
+				;;
+			p)
+				TARGET+="part${OPTARG}/"
+				;;
+			s)
+				TARGET+="section${OPTARG}/"
+				;;
+			e)
+				TARGET+="ex${OPTARG}.c"
+				addheader_ex
+				;;
+			P)
+				TARGET+="projects/project${OPTARG}.c"
+				echo $proj_num
+				addheader_proj "${OPTARG}"
+				;;
+			:)
+				echo "Option -${OPTARG} requires an argument."
+				exit 1
+				;;
+			?)
 			echo "Invalid option: -${OPTARG}."
 			exit 1
 			;;
-	esac
-done
+		esac
+	done
