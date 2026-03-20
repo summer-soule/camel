@@ -2,7 +2,7 @@ SRCDIR := src
 BINDIR := bin
 
 CC := /usr/bin/gcc
-CFLAGS := -Wall -std=c99 -g
+CFLAGS := -Wall -O0 -std=c99 -g
 
 # Auto search source files
 EXERCISE_SRC := $(shell find $(SRCDIR) -type f -path '*/section*/ex*.c')
