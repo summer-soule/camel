@@ -58,6 +58,7 @@ $(BINDIR)/part21/section2/ex7
 $(BINDIR)/part22/section1/ex1
 $(BINDIR)/part22/section2/ex2
 $(BINDIR)/part22/section4/ex9
+$(BINDIR)/part24/section1/ex1
 endef
 
 EXERCISE_TARGETS_C99 := $(filter-out $(EXERCISE_TARGETS_C89) $(EXERCISE_TARGETS_C99_EXCLUDE), $(EXERCISE_TARGETS_ALL))
