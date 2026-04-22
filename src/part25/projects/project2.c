@@ -62,15 +62,15 @@ int main(int argc, char *argv[]) {
 
     lc = localeconv();
 
-	printf("decimal_point = \"%c\"\n", *lc->decimal_point);
-	printf("thousandssep = \"%c\"\n", *lc->thousands_sep);
+	printf("decimal_point = \"%s\"\n", lc->decimal_point);
+	printf("thousandssep = \"%s\"\n", lc->thousands_sep);
 	printf("grouping = %d\n", *lc->grouping);
-	printf("mon_decimal_point = \"%c\"\n", *lc->mon_decimal_point);
-	printf("mon_thousands_sep = \"%c\"\n", *lc->mon_thousands_sep);
+	printf("mon_decimal_point = \"%s\"\n", lc->mon_decimal_point);
+	printf("mon_thousands_sep = \"%s\"\n", lc->mon_thousands_sep);
 	printf("mon_grouping = %d\n", *lc->mon_grouping);
-	printf("positive_sign = \"%c\"\n", *lc->positive_sign);
-	printf("negative_sign = \"%c\"\n", *lc->negative_sign);
-	printf("currency_symbol = \"%c\"\n", *lc->currency_symbol);
+	printf("positive_sign = \"%s\"\n", lc->positive_sign);
+	printf("negative_sign = \"%s\"\n", lc->negative_sign);
+	printf("currency_symbol = \"%s\"\n", lc->currency_symbol);
 	printf("frac_digits = %d\n", lc->frac_digits);
 	printf("p_cs_precedes = %d\n", lc->p_cs_precedes);
 	printf("n_cs_precedes = %d\n", lc->n_cs_precedes);
