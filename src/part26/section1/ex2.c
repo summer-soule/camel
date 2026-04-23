@@ -47,26 +47,24 @@ void myprintf(const char *format, ...) {
 		else
 			switch (*(format+i+1)) {
 			case 'd':
-				if (*(format+i) == '%' && *(format+i+1) == 'd') {
-					value = va_arg(ap, int);
-					if (value >= 0 && value < 10)
-						putchar('0' + value);
-					else {
-						if (value < 0) {
-							putchar('-');
-							value = -value;
-						}
-						for (int tmp = value; tmp >= 10; tmp /= 10, power *= 10)
-							;
-						do {
-							putchar('0' + value / power);
-							value -= (value / power) * power;
-							power /= 10;
-						} while (power);
+				value = va_arg(ap, int);
+				if (value >= 0 && value < 10)
+					putchar('0' + value);
+				else {
+					if (value < 0) {
+						putchar('-');
+						value = -value;
 					}
-					i++;
-					power = 1;
+					for (int tmp = value; tmp >= 10; tmp /= 10, power *= 10)
+						;
+					do {
+						putchar('0' + value / power);
+						value -= (value / power) * power;
+						power /= 10;
+					} while (power);
 				}
+				i++;
+				power = 1;
 				break;
 			case '\n':
 				putchar('\n');
