@@ -42,38 +42,39 @@ void myprintf(const char *format, ...) {
 
 	va_start(ap, format);
 	for (int i = 0; *(format+i) != '\0'; i++) {
-		// check for valid %d
-		if (*(format+i) == '%' && *(format+i+1) == 'd') {
-			value = va_arg(ap, int);
-			if (value == 0)
-				putchar('0');
-			else {
-				if (value < 0) {
-					putchar('-');
-					value = -value;
-				}
-				for (int tmp = value; tmp >= 10; tmp /= 10, power *= 10)
-					;
-				do {
-					putchar('0' + value / power);
-					value -= (value / power) * power;
-					power /= 10;
-				} while (power);
-			}
-			i++;
-			power = 1;
-		}
-		// skip invalid % specification
-		else if (*(format+i) == '%' && *(format+i+1) != 'd') {
-			i++;
-		}
-		// print newline character if found
-		else if (*(format+i) == '\\' && *(format+i+1) == 'n') {
-			putchar('\n');
-			i++;
-		}
-		else
+		if (*(format+i) != '%')
 			putchar(*(format+i));
+		else
+			switch (*(format+i+1)) {
+			case 'd':
+				if (*(format+i) == '%' && *(format+i+1) == 'd') {
+					value = va_arg(ap, int);
+					if (value >= 0 && value < 10)
+						putchar('0' + value);
+					else {
+						if (value < 0) {
+							putchar('-');
+							value = -value;
+						}
+						for (int tmp = value; tmp >= 10; tmp /= 10, power *= 10)
+							;
+						do {
+							putchar('0' + value / power);
+							value -= (value / power) * power;
+							power /= 10;
+						} while (power);
+					}
+					i++;
+					power = 1;
+				}
+				break;
+			case '\n':
+				putchar('\n');
+				i++;
+				break;
+			default:
+				i++;
+			}
 	}
 	va_end(ap);
 }
