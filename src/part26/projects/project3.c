@@ -27,9 +27,9 @@ void arrinit(int *, int);
 int compar(const void *, const void *);
 
 int main(void) {
-	int arr1[(size_t)10e2];
-	int arr2[(size_t)10e3];
-	int arr3[(size_t)10e4];
+	int arr1[(size_t)1e3];
+	int arr2[(size_t)1e4];
+	int arr3[(size_t)1e5];
 
 	arrinit(arr1, ARRSIZE(1));
 	arrinit(arr2, ARRSIZE(2));
