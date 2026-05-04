@@ -90,6 +90,7 @@ $(BINDIR)/part23/projects/project5: LDLIBS += -lm
 $(BINDIR)/part24/section2/ex4: LDLIBS += -lm
 $(BINDIR)/part27/section5/ex4: LDLIBS += -lm
 $(BINDIR)/part27/projects/project1: LDLIBS += -lm
+$(BINDIR)/part27/projects/project2: LDLIBS += -lm
 
 # Special case for C89
 $(EXERCISE_TARGETS_C89): CFLAGS := -Wall -std=c89 -g
