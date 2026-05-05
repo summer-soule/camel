@@ -30,21 +30,86 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 #define WORD_LEN 20
+#define WORDS_MAX 50
+
+int partition(char *[], int, int);
+void swap(char **, char **);
+void quickSort(char *[], int, int);
 
 int main(void) {
-	char **words = NULL;
-	char *p = NULL;
+	char p[WORD_LEN];
+	char *warr[WORDS_MAX];
+	int i = 0;
 
-//	words = realloc(words, sizeof());
+	for (int chars = 0; i < WORDS_MAX; i++) {
+		printf("Enter word: ");
 
-	for (int i = 0; ; i++) {
-        if ((p = malloc(sizeof(char)))) {
-			printf("err: malloc failed\n");
+		fgets(p, WORD_LEN, stdin);
+
+		if (p[0] == '\n')
+			break;
+
+		if (p[strlen(p)-1] == '\n')
+			p[strlen(p)-1] = '\0';
+
+		printf("%s\n", p);
+
+		if ((warr[i] = malloc(strlen(p) + 1)) == NULL) {
+			perror("malloc");
 			exit(EXIT_FAILURE);
+		}
+		strcpy(warr[i], p);
+	}
+
+	printf("\nIn unsorted order: ");
+
+	for (int j = 0; j < i; j++)
+		printf("%s ", *(warr+j));
+	putchar('\n');
+
+	quickSort(warr, 0, i - 1);
+
+	printf("\nIn sorted order: ");
+
+	for (int j = 0; j < i; j++)
+		printf("%s ", *(warr+j));
+	putchar('\n');
+
+	exit(EXIT_SUCCESS);
+}
+
+int partition(char *arr[], int low, int high) {
+	char *pivot = arr[high];
+
+	int i = low - 1;
+
+	for (int j = low; j <= high - 1; j++) {
+		if (strcmp(arr[j], pivot) < 0) {
+			i++;
+			swap(&arr[i], &arr[j]);
 		}
 	}
 
-	exit(EXIT_SUCCESS);
+	swap(&arr[i+1], &arr[high]);
+
+	return i + 1;
+}
+
+void swap(char **a, char **b) {
+	char *t = *a;
+	*a = *b;
+	*b = t;
+}
+
+void quickSort(char *arr[], int low, int high) {
+	if (low < high) {
+		int pi = partition(arr, low, high);
+
+		quickSort(arr, low, pi - 1);
+		quickSort(arr, pi + 1, high);
+	}
 }
