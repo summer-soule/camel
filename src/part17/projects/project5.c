@@ -56,20 +56,12 @@ int main(void) {
 		if (p[strlen(p)-1] == '\n')
 			p[strlen(p)-1] = '\0';
 
-		printf("%s\n", p);
-
 		if ((warr[i] = malloc(strlen(p) + 1)) == NULL) {
 			perror("malloc");
 			exit(EXIT_FAILURE);
 		}
 		strcpy(warr[i], p);
 	}
-
-	printf("\nIn unsorted order: ");
-
-	for (int j = 0; j < i; j++)
-		printf("%s ", *(warr+j));
-	putchar('\n');
 
 	quickSort(warr, 0, i - 1);
 
